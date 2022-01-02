@@ -119,7 +119,7 @@ export const getSimilarPosts = async (categories, slug) => {
     return result.posts
   }
 
-  export const getCategories = async () => {
+export const getCategories = async () => {
     const query = gql`
       query GetGategories {
           categories {
@@ -134,3 +134,13 @@ export const getSimilarPosts = async (categories, slug) => {
     return result.categories
   }
   
+export const submitComment = async (obj) => {
+  const result = await fetch('/api/comments', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(obj),
+  })
+  return result.json()
+}
